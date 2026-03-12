@@ -1,21 +1,47 @@
-*note_templates*
+*note_templates.txt*  Note Template Plugin Documentation
 
-Note Templates Plugin
+                                                                *note_templates*
 
-Commands ~
+INTRODUCTION                                       *note_templates-introduction*
+
+nvim-note-templates is a lightweight plugin for inserting Markdown templates 
+with automatic variable replacement, including support for Obsidian's 
+Templater syntax.
+
+COMMANDS                                             *note_templates-commands*
 
 :NoteTemplate {name}
-    Insert template by name
+    Insert template from {name}.md located in your templates directory.
 
 :NoteTemplatePick
-    Open Telescope template picker
+    Opens a Telescope picker to select a template from your templates dir.
 
-Variables ~
+VARIABLES                                            *note_templates-variables*
 
-{{title}}       filename
-{{date}}        current date
-{{modified}}    current time
+Templates can use both {{var}} and <% tp.file... %> syntax.
 
-Example ~
+    Variable                      Description
+    ---------------------------------------------------------
+    {{title}}                     Filename without extension
+    <% tp.file.title %>           Filename without extension
+    {{date}}                      Current date (YYYY-MM-DD)
+    <% tp.date.now() %>           Current date (YYYY-MM-DD)
+    {{time}}                      Current time (HH:mm)
+    {{modified}}                  Date & Time (YYYY-MM-DD HH:mm)
+    <% tp.file.last_modified_date() %>   Date & Time (YYYY-MM-DD HH:mm)
+    <% tp.date.yesterday() %>     Yesterday's date
+    <% tp.date.tomorrow() %>      Tomorrow's date
 
-:NoteTemplate note
+CONFIGURATION                                       *note_templates-config*
+
+Setup with default options:
+>lua
+    require("note_templates").setup({
+        templates_dir = vim.fn.stdpath("config") .. "/templates"
+    })
+<
+
+Note: The plugin also automatically updates `modified: ...` field in your
+Markdown frontmatter whenever you save a .md file.
+
+vim:tw=78:ts=8:ft=help:norl:
