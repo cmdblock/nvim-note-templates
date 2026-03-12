@@ -1,0 +1,21 @@
+*note_templates*
+
+Note Templates Plugin
+
+Commands ~
+
+:NoteTemplate {name}
+    Insert template by name
+
+:NoteTemplatePick
+    Open Telescope template picker
+
+Variables ~
+
+{{title}}       filename
+{{date}}        current date
+{{modified}}    current time
+
+Example ~
+
+:NoteTemplate note
