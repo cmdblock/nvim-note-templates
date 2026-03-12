@@ -18,12 +18,12 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
-  "yourname/nvim-note-templates",
+  "cmdblock/nvim-note-templates",
   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   config = function()
     require("note_templates").setup({
       -- Default configuration
-      templates_dir = vim.fn.stdpath("config") .. "/templates",
+      templates_dir = vim.fn.stdpath("config") .. "/note-templates",
     })
   end,
   keys = {
@@ -52,14 +52,14 @@ require("note_templates").setup({
 
 You can use these in your `.md` templates:
 
-| Variable | Description | Example Output |
-| :--- | :--- | :--- |
-| `{{title}}` / `<% tp.file.title %>` | Filename (without extension) | `My Note` |
-| `{{date}}` / `<% tp.date.now() %>` | Current date | `2026-03-12` |
-| `{{time}}` | Current time | `14:30` |
-| `{{modified}}` / `<% tp.file.last_modified_date() %>` | Current Date & Time | `2026-03-12 14:30` |
-| `<% tp.date.yesterday() %>` | Yesterday's date | `2026-03-11` |
-| `<% tp.date.tomorrow() %>` | Tomorrow's date | `2026-03-13` |
+| Variable                                              | Description                  | Example Output     |
+| :---------------------------------------------------- | :--------------------------- | :----------------- |
+| `{{title}}` / `<% tp.file.title %>`                   | Filename (without extension) | `My Note`          |
+| `{{date}}` / `<% tp.date.now() %>`                    | Current date                 | `2026-03-12`       |
+| `{{time}}`                                            | Current time                 | `14:30`            |
+| `{{modified}}` / `<% tp.file.last_modified_date() %>` | Current Date & Time          | `2026-03-12 14:30` |
+| `<% tp.date.yesterday() %>`                           | Yesterday's date             | `2026-03-11`       |
+| `<% tp.date.tomorrow() %>`                            | Tomorrow's date              | `2026-03-13`       |
 
 ## 📄 License
 
